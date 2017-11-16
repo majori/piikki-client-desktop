@@ -1,28 +1,34 @@
 <template>
   <div class="navigation">
     <div class="logo">
-      <img src="~@/assets/logo.png" />
+      <router-link to="/">
+        <img src="~@/assets/logo.png" />
+      </router-link>
     </div>
     <hr class="splitter" />
-    <div class="link" v-for="link in links" :key="link.name">
-      <div>
-        <i :class="['fa', `fa-${link.icon}`]" aria-hidden="true"/>
+    <router-link class="link" v-for="link in links" :to="link.path" :key="link.name">
+      <div class="link-wrapper" >
+          <div>
+              <i :class="['fa', `fa-${link.icon}`]" aria-hidden="true"/>
+          </div>
+          <div>
+            <span>{{ link.name }}</span>
+          </div>
       </div>
-      <div>
-        {{ link.name }}
-      </div>
-    </div>
+    </router-link>
   </div>
 </template>
 
 <script>
   export default {
+    name: 'navigation',
     data() {
       return {
         links: [
-          { name: 'Me', icon: 'user-circle-o' },
-          { name: 'Group', icon: 'users' },
-          { name: 'Graphs', icon: 'pie-chart' },
+          { name: 'Me', icon: 'user-circle-o', path: '/user' },
+          { name: 'Group', icon: 'users', path: '/group' },
+          { name: 'Graphs', icon: 'pie-chart', path: '/graph' },
+          { name: 'Settings', icon: 'cogs', path: '/settings' },
         ],
       };
     },
@@ -38,7 +44,8 @@
 
   .logo {
     padding-top: 10px;
-    & > img {
+    
+    img {
       width: 70%;
     }
   }
@@ -50,24 +57,35 @@
   }
 
   .link {
-    padding: 10px 0;
     border-bottom: 1px solid #c1c1c1;
     font-size: 1.2vw;
     cursor: pointer;
+
+    & > div {
+      padding: 10px 0;
+    }
+
+    span {
+      color: black;
+    }
 
     i.fa {
       color: #225fc6;
       font-size: 4vw;
     }
 
-    &:hover {
-      color: white;
+    &:hover, &.router-link-active {
+      span {
+        color: white;
+      }
       
       i.fa {
         color: white;
       }
       
-      background: #225fc6;
+      & > div {
+        background: #225fc6;
+      }
     }
   }
 
