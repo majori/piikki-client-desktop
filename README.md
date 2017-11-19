@@ -1,4 +1,4 @@
-# my-project
+# piikki-client-desktop
 
 > An electron-vue project
 
