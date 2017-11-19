@@ -19,9 +19,19 @@ export default new Router({
       component: Landing,
     },
     {
+      path: '/user/login',
+      name: 'login-page',
+      component: Login,
+    },
+    {
       path: '/user',
       name: 'user-page',
       component: User,
+    },
+    {
+      path: '/user/create',
+      name: 'create-user-page',
+      component: CreateUser,
     },
     {
       path: '/group',
@@ -37,16 +47,6 @@ export default new Router({
       path: '/settings',
       name: 'settings-page',
       component: Settings,
-    },
-    {
-      path: '/login',
-      name: 'login-page',
-      component: Login,
-    },
-    {
-      path: '/create-user',
-      name: 'create-user-page',
-      component: CreateUser,
     },
     {
       path: '*',

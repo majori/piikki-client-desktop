@@ -17,14 +17,17 @@
         <button class="btn waves-effect waves-light">LOGIN</button>
       </div>
     </form>
+    <div v-if="failedAuth" class="row error">
+      Wrong username or password
+    </div>
     <div class="row">
-      <router-link to="/create-user">Don't have an account yet?</router-link>
+      <router-link :to="{ name: 'create-user-page' }">Don't have an account yet?</router-link>
     </div>
   </div>
 </template>
 
 <script>
-  import { mapActions } from 'vuex';
+  import { mapActions, mapGetters } from 'vuex';
 
   export default {
     name: 'login',
@@ -34,6 +37,11 @@
         password: '',
       };
     },
+    computed: {
+      ...mapGetters([
+        'failedAuth',
+      ]),
+    },
     methods: {
       ...mapActions([
         'login',
@@ -42,14 +50,28 @@
   };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .wrapper {
     padding-top: 15vh;
     text-align: center;
   }
 
-  .input.row {
-    margin: 0;
+  form {
+    .row {
+      margin: 0;
+    }
+
+    .input-field {
+      margin: 0.5rem;
+    }
+
+    button {
+      margin: 10px 0;
+    }
+  }
+
+  .error {
+    color: red;
   }
 
 </style>
