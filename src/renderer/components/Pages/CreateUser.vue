@@ -1,16 +1,13 @@
 <template>
   <div id="wrapper">
-    USER
+    Create user
   </div>
 </template>
 
 <script>
   export default {
-    name: 'user-page',
+    name: 'create-user-page',
     components: { },
-    methods: {
-
-    },
   };
 </script>
 
