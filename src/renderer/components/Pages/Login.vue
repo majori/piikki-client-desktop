@@ -56,11 +56,11 @@
     text-align: center;
   }
 
-  form {
-    .row {
-      margin: 0;
-    }
+  .row {
+    margin: 0;
+  }
 
+  form {
     .input-field {
       margin: 0.5rem;
     }

@@ -10,11 +10,21 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex';
   import Navigation from './components/Navigation';
 
   export default {
     name: 'piikki',
     components: { Navigation },
+    created() {
+      // TODO: Check token from localstorage
+      this.setToken('restricted_token');
+    },
+    methods: {
+      ...mapActions([
+        'setToken',
+      ]),
+    },
   };
 </script>
 
@@ -38,6 +48,8 @@
         rgba(255, 255, 255, 1) 40%,
         rgba(229, 229, 229, .9) 100%
     );
+
+    margin: 0;
   }
 
   #app > .col {

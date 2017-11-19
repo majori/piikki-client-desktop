@@ -9,11 +9,18 @@ const mutations = {
 };
 
 const actions = {
-  setToken: ({ commit }, token) => commit('SET_TOKEN', token),
+  setToken: ({ commit }, token) => {
+    commit('SET_TOKEN', token);
+  },
+};
+
+const getters = {
+  token: state => state.token,
 };
 
 export default {
   state,
   mutations,
   actions,
+  getters,
 };

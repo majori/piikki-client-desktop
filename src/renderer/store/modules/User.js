@@ -3,6 +3,7 @@ import router from '@/router';
 
 const state = {
   username: '',
+  saldo: null,
   errors: {
     failedAuth: false,
     create: null,
