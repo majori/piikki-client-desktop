@@ -49,6 +49,33 @@ const actions = {
     }
   },
 
+  alternativeLogin: async ({ commit }, tag) => {
+    const res = await Vue.http.post(
+      '/users/authenticate/alternative',
+      { key: tag },
+    );
+
+    // User was found with this tag
+    if (res.data.result.authenticated) {
+      commit('LOGIN', res.data.result.username);
+      router.push({ name: 'user-page' });
+    } else {
+      commit('SET_TAG', tag);
+    }
+  },
+
+  createAlternativeLogin: async ({ commit }, { username, tag }) => {
+    const res = await Vue.http.post(
+      '/users/authenticate/alternative/create',
+      { username, key: tag },
+    );
+
+    if (res.data.ok) {
+      commit('SET_TAG', null);
+      alert('Card linked successfully!'); // eslint-disable-line
+    }
+  },
+
   logout: ({ commit }) => {
     commit('LOGOUT');
     router.push({ name: 'login-page' });

@@ -6,6 +6,7 @@ import App from './App';
 import router from './router';
 import store from './store';
 import http from './services/http';
+import './services/nfc';
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'));
 

@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-content center-align">
       <h2>Saldo</h2>
-      <h1 class="saldo">{{ realSaldo ? saldo : '-' }}</h1>
+      <h1 class="saldo">{{ (realSaldo !== null) ? saldo : '-' }}</h1>
       <div>
         <button @click="removeSaldo" class="btn-floating btn-large waves-effect waves-light">
           <i class="fa fa-minus" aria-hidden="true"></i>
@@ -28,13 +28,11 @@
       };
     },
     created() {
-      if (!this.realSaldo) {
-        this.getSaldo(this.username);
-      }
+      this.getSaldo(this.username);
     },
     computed: {
       saldo() {
-        return this.realSaldo + this.deltaSaldo;
+        return (this.realSaldo || 0) + this.deltaSaldo;
       },
       ...mapGetters({
         realSaldo: 'saldo',
@@ -51,7 +49,7 @@
         this.saldoChanged();
       },
 
-      saldoChanged: _.debounce(async function () {
+      saldoChanged: _.debounce(async function () { // eslint-disable-line
         if (!this.username || this.deltaSaldo === 0) {
           return;
         }
@@ -67,6 +65,12 @@
         'getSaldo',
         'makeTransaction',
       ]),
+    },
+    watch: {
+      // If username changes update the saldo
+      username(val) {
+        this.getSaldo(val);
+      },
     },
   };
 </script>
