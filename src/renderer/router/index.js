@@ -1,13 +1,13 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Landing from '@/components/Pages/Landing';
-import User from '@/components/Pages/User';
-import Group from '@/components/Pages/Group';
-import Graphs from '@/components/Pages/Graphs';
-import Settings from '@/components/Pages/Settings';
-import Login from '@/components/Pages/Login';
-import CreateUser from '@/components/Pages/CreateUser';
+import Landing from '@/components/pages/Landing';
+import User from '@/components/pages/User';
+import Group from '@/components/pages/Group';
+import Graphs from '@/components/pages/Graphs';
+import Settings from '@/components/pages/Settings';
+import Login from '@/components/pages/Login';
+import CreateUser from '@/components/pages/CreateUser';
 
 Vue.use(Router);
 

@@ -10,8 +10,15 @@ const http = axios.create({
 http.interceptors.request.use((request) => {
   // Set token
   request.headers = { Authorization: store.getters.token };
+  store.dispatch('addPendingRequest', request);
 
   return request;
+});
+
+http.interceptors.response.use((response) => {
+  store.dispatch('removePendingRequest', response);
+
+  return response;
 });
 
 export default http;

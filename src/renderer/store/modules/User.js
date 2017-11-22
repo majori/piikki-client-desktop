@@ -20,9 +20,13 @@ const mutations = {
   },
   LOGOUT(state) {
     state.username = '';
+    state.saldo = null;
   },
   USER_ERROR(state, { key, msg }) {
     state.errors[key] = msg;
+  },
+  SET_SALDO(state, saldo) {
+    state.saldo = saldo;
   },
 };
 
@@ -79,10 +83,28 @@ const actions = {
       });
     }
   },
+
+  getSaldo: async ({ commit }, username) => {
+    const res = await Vue.http.get(
+      `/group/members/${username}`,
+    );
+
+    commit('SET_SALDO', res.data.result.saldo);
+  },
+
+  makeTransaction: async ({ commit }, transaction) => {
+    const res = await Vue.http.post(
+      '/transaction',
+      transaction,
+    );
+
+    commit('SET_SALDO', res.data.result.saldo);
+  },
 };
 
 const getters = {
   loggedInUser: state => state.username,
+  saldo: state => state.saldo,
   failedAuth: state => state.errors.failedAuth,
   userCreateError: state => state.errors.create,
 };

@@ -1,35 +1,29 @@
 <template>
-  <div id="app" class="row">
-    <div class="col s1">
-      <navigation></navigation>
-    </div>
-    <div class="col s11">
-      <router-view></router-view>
-    </div>
+  <div id="app">
+    <token-setter class="row">
+      <div class="col s1">
+        <navigation></navigation>
+      </div>
+      <div class="col s11">
+        <router-view></router-view>
+      </div>
+    </token-setter>
   </div>
 </template>
 
 <script>
-  import { mapActions } from 'vuex';
   import Navigation from './components/Navigation';
+  import TokenSetter from './components/wrappers/TokenSetter';
 
   export default {
     name: 'piikki',
-    components: { Navigation },
-    created() {
-      // TODO: Check token from localstorage
-      this.setToken('restricted_token');
-    },
-    methods: {
-      ...mapActions([
-        'setToken',
-      ]),
-    },
+    components: { Navigation, TokenSetter },
   };
 </script>
 
 <style lang="scss">
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+  @import url('https://fonts.googleapis.com/css?family=Montserrat');
   @import "./variables";
 
   // Materialize
@@ -52,7 +46,7 @@
     margin: 0;
   }
 
-  #app > .col {
+  #app > .row > .col {
     padding: 0;
   }
 </style>
