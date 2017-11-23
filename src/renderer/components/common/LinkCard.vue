@@ -6,7 +6,10 @@
       </button>
     </div>
     <div v-else class="card-content">
-      <div v-if="!tag">
+      <div v-if="!readerOnline">
+        Reader is offline
+      </div>
+      <div v-else-if="!tag">
         Insert card to the reader
       </div>
       <div v-else class="card-ready">
@@ -34,6 +37,7 @@
     computed: {
       ...mapGetters([
         'tag',
+        'readerOnline',
       ]),
     },
     methods: {
