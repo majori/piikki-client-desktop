@@ -52,7 +52,7 @@ const actions = {
   alternativeLogin: async ({ commit }, tag) => {
     const res = await Vue.http.post(
       '/users/authenticate/alternative',
-      { key: tag },
+      { key: tag, type: 20 }, // TODO: Get type somewhere else
     );
 
     // User was found with this tag
@@ -67,7 +67,7 @@ const actions = {
   createAlternativeLogin: async ({ commit }, { username, tag }) => {
     const res = await Vue.http.post(
       '/users/authenticate/alternative/create',
-      { username, key: tag },
+      { username, key: tag, type: 20 },
     );
 
     if (res.data.ok) {
