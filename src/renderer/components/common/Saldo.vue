@@ -2,12 +2,12 @@
   <div class="card">
     <div class="card-content center-align">
       <h2>Saldo</h2>
-      <h1 class="saldo">{{ (realSaldo !== null) ? saldo : '-' }}</h1>
+      <h1 class="saldo">{{ saldoExists ? saldo : '-' }}</h1>
       <div>
-        <button @click="removeSaldo" class="btn-floating btn-large waves-effect waves-light">
+        <button @click="removeSaldo" :disabled="!saldoExists" class="btn-floating btn-large waves-effect waves-light">
           <i class="fa fa-minus" aria-hidden="true"></i>
         </button>
-        <button @click="addSaldo" class="btn-floating btn-large waves-effect waves-light">
+        <button @click="addSaldo" :disabled="!saldoExists" class="btn-floating btn-large waves-effect waves-light">
           <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
       </div>
@@ -33,6 +33,9 @@
     computed: {
       saldo() {
         return (this.realSaldo || 0) + this.deltaSaldo;
+      },
+      saldoExists() {
+        return this.realSaldo !== null;
       },
       ...mapGetters({
         realSaldo: 'saldo',
