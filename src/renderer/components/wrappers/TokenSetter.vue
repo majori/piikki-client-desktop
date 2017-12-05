@@ -10,7 +10,7 @@
   export default {
     name: 'token-setter-wrapper',
     created() {
-      const token = localStorage.getItem('TOKEN');
+      const token = 'restricted_token'; // localStorage.getItem('TOKEN');
       if (token) {
         this.setToken(token);
       } else {

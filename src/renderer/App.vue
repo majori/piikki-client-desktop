@@ -4,7 +4,7 @@
       <div class="col s1">
         <navigation></navigation>
       </div>
-      <div class="col s11">
+      <div id="content" class="col s11">
         <router-view></router-view>
       </div>
     </token-setter>
@@ -44,9 +44,19 @@
     );
 
     margin: 0;
+
+    & > .row {
+      margin: 0;
+    }
+
+    & > .row > .col {
+      padding: 0;
+    }
   }
 
-  #app > .row > .col {
-    padding: 0;
+  #content > * {
+    margin: 0;
   }
+
+
 </style>
