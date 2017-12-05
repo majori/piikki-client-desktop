@@ -99,6 +99,11 @@ const actions = {
         );
 
         if (addMemberRes.data.ok) {
+          commit('USER_ERROR', {
+            key: 'create',
+            msg: null,
+          });
+
           commit('LOGIN', createRes.data.result);
           router.push({ name: 'user-page' });
         }
