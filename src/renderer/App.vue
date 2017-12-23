@@ -21,6 +21,7 @@
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
   @import url('https://fonts.googleapis.com/css?family=Montserrat');
   @import "./variables";
+  @import "./global";
 
   // Materialize
   @import "~materialize-css/sass/materialize.scss";
@@ -31,24 +32,13 @@
 
   $navigation-width: 10vw;
 
-  body {
-    font-family: 'Source Sans Pro', sans-serif;
-    min-height: 100vh;
-    background:
-      radial-gradient(
-        ellipse at top left,
-        rgba(255, 255, 255, 1) 40%,
-        rgba(229, 229, 229, .9) 100%
-    );
-  }
-
   #navigation {
     width: $navigation-width;
   }
 
   #content {
     margin-left: $navigation-width;
+    margin-bottom: 0;
   }
-
 
 </style>

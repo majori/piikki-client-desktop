@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-content center-align">
-      <h2>Saldo</h2>
+      <card-header title="Saldo"></card-header>
       <h1 class="saldo">{{ saldoExists ? saldo : '-' }}</h1>
       <div>
         <button @click="removeSaldo" :disabled="!saldoExists" class="btn-floating btn-large waves-effect waves-light">
@@ -18,10 +18,12 @@
 <script>
   import * as _ from 'lodash';
   import { mapActions, mapGetters } from 'vuex';
+  import CardHeader from '@/components/common/CardHeader';
 
   export default {
-    name: 'saldo',
+    name: 'user-saldo',
     props: ['username'],
+    components: { CardHeader },
     data() {
       return {
         deltaSaldo: 0,

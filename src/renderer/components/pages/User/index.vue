@@ -4,7 +4,7 @@
       <h1>{{ username }}</h1>
     </div>
     <div class="col s4">
-      <saldo :username="username"></saldo>
+      <user-saldo :username="username"></user-saldo>
     </div>
     <div class="col s3">
       <div class="card center-align">
@@ -19,12 +19,12 @@
 
 <script>
   import { mapGetters, mapActions } from 'vuex';
-  import Saldo from '@/components/common/Saldo';
-  import LinkCard from '@/components/common/LinkCard';
+  import UserSaldo from './components/UserSaldo';
+  import LinkCard from './components/LinkCard';
 
   export default {
     name: 'user-page',
-    components: { Saldo, LinkCard },
+    components: { UserSaldo, LinkCard },
     created() {
       // User is not logged in, redirect to login
       if (!this.username) {
