@@ -1,12 +1,8 @@
 <template>
   <div id="app">
-    <token-setter class="row">
-      <div class="col s1">
-        <navigation></navigation>
-      </div>
-      <div id="content" class="col s11">
-        <router-view></router-view>
-      </div>
+    <token-setter>
+      <navigation id="navigation"></navigation>
+      <router-view id="content"></router-view>
     </token-setter>
   </div>
 </template>
@@ -33,29 +29,25 @@
   $fa-font-path: "~font-awesome/fonts";
   @import "~font-awesome/scss/font-awesome.scss";
 
-  body { font-family: 'Source Sans Pro', sans-serif; }
+  $navigation-width: 10vw;
 
-  #app {
+  body {
+    font-family: 'Source Sans Pro', sans-serif;
+    min-height: 100vh;
     background:
       radial-gradient(
         ellipse at top left,
         rgba(255, 255, 255, 1) 40%,
         rgba(229, 229, 229, .9) 100%
     );
-
-    margin: 0;
-
-    & > .row {
-      margin: 0;
-    }
-
-    & > .row > .col {
-      padding: 0;
-    }
   }
 
-  #content > * {
-    margin: 0;
+  #navigation {
+    width: $navigation-width;
+  }
+
+  #content {
+    margin-left: $navigation-width;
   }
 
 
