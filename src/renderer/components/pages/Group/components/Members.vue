@@ -7,14 +7,11 @@
           <td v-if="member.saldo >= 0" :style="{ textAlign: 'right', borderRight: '1px solid grey' }">
             {{ member.username }}
           </td>
-          <td class="saldo">
-            <div>
-              <div
-                :class="{ negative: member.saldo < 0 }"
-                :style="{ width: `${(member.saldo * 100) / (member.saldo < 0 ? saldos.min : saldos.max)}%` }"
-              >
+          <td class="saldo-wrapper">
+            <div :class="{ 'indicator-wrapper': true, negative: member.saldo < 0 }">
+              <div class="indicator" :style="{ width: `${(member.saldo * 100) / (member.saldo < 0 ? saldos.min : saldos.max)}%` }">
               </div>
-              <span>{{ member.saldo }}</span>
+              <span class="saldo">{{ member.saldo }}</span>
             </div>
           </td>
           <td v-if="member.saldo < 0" :style="{ textAlign: 'left', borderLeft: '1px solid grey' }">
@@ -59,7 +56,7 @@
 
 <style scoped lang="scss">
   $border-radius: 10px;
-  $indicator-height: 26px;
+  $indicator-height: 28px;
 
   .members {
     hr {
@@ -71,35 +68,40 @@
     overflow-x: hidden;
   }
 
-  .saldo {
+  .saldo-wrapper {
     padding: 0;
+  }
 
-    & > div {
-      position: relative;
+  .indicator-wrapper {
+    position: relative;
+  }
 
-      & > span {
-        position: absolute;
-        top: $indicator-height / 2;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 0 5px;
-        border-radius: 10px;
-        border: 1px solid lightgray;
-        background: #efefef;
-        color: black;
-      }
+  .saldo {
+    position: absolute;
+    top: $indicator-height / 2;
+    left: 22px;
+    transform: translate(-50%, -50%);
+    padding: 0 5px;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    background: #efefef;
+    font-weight: bold;
+  }
 
-      & > div {
-        background: #209c20;
-        height: $indicator-height;
-        border-radius: 0 $border-radius $border-radius 0;
+  .indicator {
+    background: #209c20;
+    height: $indicator-height;
+    border-radius: 0 $border-radius $border-radius 0;
+  }
 
-        &.negative {
-          float: right;
-          background: #f15252;
-          border-radius: $border-radius 0 0 $border-radius;
-        }
-      }
-    }
+  .indicator-wrapper.negative .indicator {
+    float: right;
+    background: #f15252;
+    border-radius: $border-radius 0 0 $border-radius;
+  }
+
+  .indicator-wrapper.negative .saldo {
+    left: initial;
+    right: 0;
   }
 </style>
