@@ -39,6 +39,7 @@ const actions = {
 const getters = {
   members: state => state.members,
   membersBySaldo: state => _.orderBy(state.members, ['saldo'], ['asc']),
+  membersByUsername: state => _.orderBy(state.members, ['username'], ['asc']),
   groupSaldo: state => state.saldo,
 };
 
