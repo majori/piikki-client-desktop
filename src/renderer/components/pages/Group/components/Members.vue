@@ -59,11 +59,6 @@
   $indicator-height: 28px;
 
   .members {
-    hr {
-      width: 90%;
-    }
-
-    max-height: 96vh;
     overflow-y: auto;
     overflow-x: hidden;
   }
