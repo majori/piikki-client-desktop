@@ -1,14 +1,14 @@
 <template>
   <div class="group-page row">
     <div class="col s5">
-      <members></members>
+      <members />
     </div>
-    <div class="col s7 row">
+    <div class="col s5 row">
       <div class="col s12">
-        <group-saldo></group-saldo>
+        <group-saldo />
       </div>
       <div class="col s12">
-        <transactions></transactions>
+        <transactions />
       </div>
     </div>
   </div>
@@ -26,7 +26,13 @@
 </script>
 
 <style scoped lang="scss">
-  .group-page /deep/ .members .card-content {
-    max-height: 100%;
+  .group-page /deep/ {
+    .members .table {
+      max-height: 80vh;
+    }
+
+    .transactions .table {
+      max-height: 20vh;
+    }
   }
 </style>

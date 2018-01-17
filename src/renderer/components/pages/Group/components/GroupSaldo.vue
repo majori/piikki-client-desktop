@@ -1,19 +1,16 @@
 <template>
-  <div class="saldo card center-align">
-    <div class="card-content">
-      <card-header title="Group saldo"></card-header>
-      <h2>{{ saldo }}</h2>
-    </div>
-  </div>
+  <card title="Group saldo">
+    <h2>{{ saldo }}</h2>
+  </card>
 </template>
 
 <script>
   import { mapGetters, mapActions } from 'vuex';
-  import CardHeader from '@/components/common/CardHeader';
+  import Card from '@/components/common/Card';
 
   export default {
     name: 'group-saldo',
-    components: { CardHeader },
+    components: { Card },
     created() {
       this.getGroupSaldo();
     },
@@ -31,7 +28,7 @@
 </script>
 
 <style scoped lang="scss">
-  .saldo {
-
+  h2 {
+    margin: 0;
   }
 </style>

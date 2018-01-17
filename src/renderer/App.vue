@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <token-setter>
-      <navigation id="navigation"></navigation>
-      <router-view id="content"></router-view>
+      <navigation id="navigation"/>
+      <router-view id="content"/>
     </token-setter>
   </div>
 </template>

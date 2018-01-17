@@ -1,5 +1,5 @@
 <template>
-  <div class="card center-align">
+  <card>
     <div v-if="!opened" class="card-content">
       <button class="btn waves-effect waves-light" @click="toggleOpen()">
         LINK CARD
@@ -20,14 +20,16 @@
         </button>
       </div>
     </div>
-  </div>
+  </card>
 </template>
 
 <script>
   import { mapGetters, mapActions } from 'vuex';
+  import Card from '@/components/common/Card';
 
   export default {
     name: 'link-card',
+    components: { Card },
     props: ['username'],
     data() {
       return {

@@ -58,8 +58,8 @@ const actions = {
 
 const getters = {
   members: state => state.members,
-  membersBySaldo: state => _.orderBy(state.members, ['saldo'], ['asc']),
-  membersByUsername: state => _.orderBy(state.members, ['username'], ['asc']),
+  membersBySaldo: state => (dir = 'asc') => _.orderBy(state.members, ['saldo'], [dir]),
+  membersByUsername: state => (dir = 'asc') => _.orderBy(state.members, ['username'], [dir]),
   groupSaldo: state => state.saldo,
   groupTransactions: state => _.map(state.transactions, trx => ({
     username: trx.username,

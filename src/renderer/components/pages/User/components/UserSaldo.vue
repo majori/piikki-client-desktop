@@ -1,29 +1,26 @@
 <template>
-  <div class="card">
-    <div class="card-content center-align">
-      <card-header title="Saldo"></card-header>
-      <h1 class="saldo">{{ saldoExists ? saldo : '-' }}</h1>
-      <div>
-        <button @click="removeSaldo" :disabled="!saldoExists" class="btn-floating btn-large waves-effect waves-light">
-          <i class="fa fa-minus" aria-hidden="true"></i>
-        </button>
-        <button @click="addSaldo" :disabled="!saldoExists" class="btn-floating btn-large waves-effect waves-light">
-          <i class="fa fa-plus" aria-hidden="true"></i>
-        </button>
-      </div>
+  <card title="Saldo">
+    <h1 class="saldo">{{ saldoExists ? saldo : '-' }}</h1>
+    <div>
+      <button @click="removeSaldo" :disabled="!saldoExists" class="btn-floating btn-large waves-effect waves-light">
+        <i class="fa fa-minus" aria-hidden="true"></i>
+      </button>
+      <button @click="addSaldo" :disabled="!saldoExists" class="btn-floating btn-large waves-effect waves-light">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </button>
     </div>
-  </div>
+  </card>
 </template>
 
 <script>
   import * as _ from 'lodash';
   import { mapActions, mapGetters } from 'vuex';
-  import CardHeader from '@/components/common/CardHeader';
+  import Card from '@/components/common/Card';
 
   export default {
     name: 'user-saldo',
     props: ['username'],
-    components: { CardHeader },
+    components: { Card },
     data() {
       return {
         deltaSaldo: 0,

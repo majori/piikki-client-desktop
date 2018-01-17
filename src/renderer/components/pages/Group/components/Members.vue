@@ -1,7 +1,14 @@
 <template>
-  <div class="members card center-align">
-    <div class="card-content">
-      <card-header title="Members"></card-header>
+  <card class="members" title="Members">
+    <div slot="actions">
+      <button class="btn-floating waves-effect waves-light" @click="setMemberOrder('username')">
+        <i :class="`fa fa-sort-alpha-${order.username.asc ? 'asc' : 'desc'}`" aria-hidden="true" />
+      </button>
+      <button class="btn-floating waves-effect waves-light" @click="setMemberOrder('saldo')">
+        <i :class="`fa fa-sort-numeric-${order.saldo.asc ? 'asc' : 'desc'}`" aria-hidden="true" />
+      </button>
+    </div>
+    <div class="table">
       <table>
         <tr v-for="member in members" :key="member.username">
           <td v-if="member.saldo >= 0" :style="{ textAlign: 'right', borderRight: '1px solid grey' }">
@@ -20,24 +27,43 @@
         </tr>
       </table>
     </div>
-  </div>
+  </card>
 </template>
 
 <script>
   import * as _ from 'lodash';
   import { mapGetters, mapActions } from 'vuex';
-  import CardHeader from '@/components/common/CardHeader';
+  import Card from '@/components/common/Card';
 
   export default {
     name: 'group-members',
-    components: { CardHeader },
+    components: { Card },
+    data() {
+      return {
+        order: {
+          sortBy: 'saldo',
+          saldo: {
+            asc: true,
+          },
+          username: {
+            asc: true,
+          },
+        },
+      };
+    },
     created() {
       this.getMembers();
     },
     computed: {
-      ...mapGetters({
-        members: 'membersBySaldo',
-      }),
+      ...mapGetters([
+        'membersBySaldo',
+        'membersByUsername',
+      ]),
+      members() {
+        const getter = (this.order.sortBy === 'saldo') ? this.membersBySaldo : this.membersByUsername;
+        const dir = this.order[this.order.sortBy].asc ? 'asc' : 'desc';
+        return getter(dir);
+      },
       saldos() {
         const saldos = _.map(this.members, 'saldo');
         return {
@@ -50,6 +76,13 @@
       ...mapActions([
         'getMembers',
       ]),
+      setMemberOrder(type) {
+        if (this.order.sortBy === type) {
+          this.order[type].asc = !this.order[type].asc;
+        } else {
+          this.order.sortBy = type;
+        }
+      },
     },
   };
 </script>
@@ -57,11 +90,6 @@
 <style scoped lang="scss">
   $border-radius: 10px;
   $indicator-height: 28px;
-
-  .members {
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
 
   .saldo-wrapper {
     padding: 0;
@@ -98,5 +126,9 @@
   .indicator-wrapper.negative .saldo {
     left: initial;
     right: 0;
+  }
+
+  .table {
+    overflow: auto;
   }
 </style>
