@@ -117,9 +117,7 @@ const actions = {
   },
 
   getSaldo: async ({ commit }, username) => {
-    const res = await Vue.http.get(
-      `/group/members/${username}`,
-    );
+    const res = await Vue.http.get(`/group/members/${username}`);
 
     commit('SET_SALDO', res.data.result.saldo);
   },

@@ -22,9 +22,7 @@ const mutations = {
 
 const actions = {
   async getMembers({ commit }) {
-    const res = await Vue.http.get(
-      '/group/members',
-    );
+    const res = await Vue.http.get('/group/members');
 
     commit('SET_MEMBERS', res.data.result);
   },
