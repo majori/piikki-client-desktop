@@ -1,15 +1,9 @@
 <template>
   <card class="transactions" title="Latest transactions">
     <div slot="actions">
-      <button class="btn waves-effect waves-light">
-        Day
-      </button>
-      <button class="btn waves-effect waves-light">
-        Week
-      </button>
-      <button class="btn waves-effect waves-light">
-        Month
-      </button>
+      <button class="btn waves-effect waves-light" @click="getTransactions(1)">Day</button>
+      <button class="btn waves-effect waves-light" @click="getTransactions(7)">Week</button>
+      <button class="btn waves-effect waves-light" @click="getTransactions(30)">Month</button>
     </div>
     <div class="table">
       <table>
@@ -17,6 +11,9 @@
           <td>{{ trx.timestamp }}</td>
           <td>{{ trx.username }}</td>
           <td>{{ trx.diff }}</td>
+        </tr>
+        <tr v-if="transactions.length === 0">
+          <td class="center-align" colspan="3">No transactions</td>
         </tr>
       </table>
     </div>
@@ -32,7 +29,8 @@
     name: 'group-transactions',
     components: { Card },
     created() {
-      this.getGroupTransactions(subDays(new Date(), 160));
+      // On mount fetch transactions since last week
+      this.getTransactions(7);
     },
     computed: {
       ...mapGetters({
@@ -40,6 +38,9 @@
       }),
     },
     methods: {
+      getTransactions(daysSince) {
+        this.getGroupTransactions(subDays(new Date(), daysSince));
+      },
       ...mapActions([
         'getGroupTransactions',
       ]),
