@@ -34,16 +34,14 @@
 </script>
 
 <style lang="scss" scoped>
-
-
-
   .navigation {
+    background: #fbfbfb;
     position: fixed;
     top: 0;
     left: 0;
     text-align: center;
     height: 100vh;
-    box-shadow: 0 0 15px #c1c1c1;
+    box-shadow: 0 0 15px #ccc;
   }
 
   .logo {

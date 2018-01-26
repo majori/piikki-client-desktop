@@ -1,7 +1,9 @@
 <template>
   <div v-if="username" class="wrapper row">
-    <div class="center-align">
-      <h1>{{ username }}</h1>
+    <div class="username">
+      <card>
+        <h1>{{ username }}</h1>
+      </card>
     </div>
     <div class="col s4">
       <user-saldo :username="username"/>
@@ -43,7 +45,17 @@
   };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+  .username {
+    h1 {
+      margin: 0;
+    }
+    /deep/ .card-content {
+      padding: 10px;
+    }
+    width: 70%;
+    margin: auto;
+  }
   .wrapper {
     margin: 0;
   }

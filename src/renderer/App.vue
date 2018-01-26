@@ -2,7 +2,9 @@
   <div id="app">
     <token-setter>
       <navigation id="navigation"/>
-      <router-view id="content"/>
+      <div id="content">
+        <router-view />
+      </div>
     </token-setter>
   </div>
 </template>
