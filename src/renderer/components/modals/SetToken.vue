@@ -1,16 +1,14 @@
 <template>
-  <div>
+  <div class="center-align">
     <div v-if="!tokenExists" class="row">
-      Set token received from
+      <h3>Hey!</h3>
+      <b>It seems that you are using this app for the first time. Insert the token given to your group.</b>
     </div>
     <div class="row" v-else>
-      Change token
-    </div>
-    <div class="row" v-if="invalidToken">
-      Invalid token
+      <b>Change the API token</b>
     </div>
     <div class="row">
-      <input v-model="token"/>
+      <input v-model="token" placeholder="Insert the token here"/>
     </div>
     <div class="row">
       <button class="btn waves-effect waves-light" @click="handleClose()">
@@ -19,6 +17,9 @@
       <button class="btn waves-effect waves-light" v-if="tokenExists" @click="closeModal()">
         CANCEL
       </button>
+    </div>
+    <div class="row error" v-if="invalidToken">
+      Token seems to be invalid. Are you sure you typed the token correctly?
     </div>
   </div>
 </template>
@@ -64,6 +65,18 @@
   };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
+  h3 {
+    margin: 20px;
+  }
+
+  input {
+    width: 60%;
+    font-family: monospace;
+  }
+
+  .error {
+    color: red;
+  }
 
 </style>

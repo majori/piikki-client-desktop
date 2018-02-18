@@ -4,7 +4,9 @@
     <div class="col s4"></div>
     <div class="col s4">
       <card>
-        <button class="btn waves-effect waves-light" @click="showModal('set-token')">CHANGE TOKEN</button>
+        <button class="btn waves-effect waves-light" @click="showModal('set-token')">
+          CHANGE API TOKEN
+        </button>
       </card>
     </div>
   </div>
