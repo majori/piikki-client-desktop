@@ -1,11 +1,11 @@
 <template>
   <card>
-    <div v-if="!opened" class="card-content">
+    <div v-if="!opened">
       <button class="btn waves-effect waves-light" @click="toggleOpen()">
         LINK CARD
       </button>
     </div>
-    <div v-else class="card-content">
+    <div v-else>
       <div v-if="!readerOnline">
         Reader is offline
       </div>
@@ -61,7 +61,5 @@
 </script>
 
 <style lang="scss" scoped>
-  .card.ready button {
-    margin-top: 10px;
-  }
+
 </style>

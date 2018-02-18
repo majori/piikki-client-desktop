@@ -74,7 +74,7 @@ const getters = {
   groupTransactions: state => _.map(state.transactions, trx => ({
     username: trx.username,
     timestamp: format(trx.timestamp, 'D.M. HH:mm'),
-    diff: trx.newSaldo - trx.oldSaldo,
+    diff: _.round(trx.newSaldo - trx.oldSaldo, 2),
   })),
 };
 
