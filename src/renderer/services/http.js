@@ -1,7 +1,7 @@
 import axios from 'axios';
 import store from '@/store';
 
-const domain = process.env.NODE_ENV === 'production' ? 'piikki.ddns.net' : 'dev.piikki.ddns.net';
+const domain = process.env.NODE_ENV === 'production' ? 'api.piikki.net' : 'dev.piikki.net';
 
 const http = axios.create({
   baseURL: `https://${domain}/api/v1/restricted`,
