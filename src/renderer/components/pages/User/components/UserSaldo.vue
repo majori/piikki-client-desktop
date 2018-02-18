@@ -31,7 +31,7 @@
     },
     computed: {
       saldo() {
-        return (this.realSaldo || 0) + this.deltaSaldo;
+        return _.round((this.realSaldo || 0) + this.deltaSaldo, 2);
       },
       saldoExists() {
         return this.realSaldo !== null;
@@ -59,7 +59,6 @@
           username: this.username,
           amount: this.deltaSaldo,
         });
-
         this.deltaSaldo = 0;
       }, 1000),
 
