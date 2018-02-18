@@ -1,31 +1,26 @@
 <template>
   <div>
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script>
-  import { mapActions, mapGetters } from 'vuex';
+  import { mapActions } from 'vuex';
 
   export default {
     name: 'token-setter-wrapper',
     created() {
-      const token = 'restricted_token'; // localStorage.getItem('TOKEN');
+      const token = localStorage.getItem('TOKEN');
       if (token) {
         this.setToken(token);
       } else {
-        this.$router.push({ name: 'settings-page' });
+        this.showModal('set-token');
       }
-    },
-    computed: {
-      ...mapGetters([
-        'token',
-        'loadingPath',
-      ]),
     },
     methods: {
       ...mapActions([
         'setToken',
+        'showModal',
       ]),
     },
   };

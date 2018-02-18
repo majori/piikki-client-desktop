@@ -24,7 +24,6 @@ const mutations = {
 
 const actions = {
   setToken: ({ commit }, token) => {
-    localStorage.setItem('TOKEN', token);
     commit('SET_TOKEN', token);
   },
   addPendingRequest: ({ commit }, req) => {

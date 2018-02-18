@@ -5,6 +5,7 @@
       <div id="content">
         <router-view />
       </div>
+      <modal/>
     </token-setter>
   </div>
 </template>
@@ -12,10 +13,11 @@
 <script>
   import Navigation from './components/Navigation';
   import TokenSetter from './components/wrappers/TokenSetter';
+  import Modal from './components/modals';
 
   export default {
     name: 'piikki',
-    components: { Navigation, TokenSetter },
+    components: { Navigation, TokenSetter, Modal },
   };
 </script>
 

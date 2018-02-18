@@ -3,6 +3,9 @@ import * as _ from 'lodash';
 import { format } from 'date-fns';
 
 const state = {
+  group: {
+    name: null,
+  },
   saldo: null,
   members: [],
   transactions: [],
@@ -18,9 +21,18 @@ const mutations = {
   SET_GROUP_TRANSACTIONS(state, transactions) {
     state.transactions = transactions;
   },
+  SET_GROUP(state, group) {
+    state.group = group;
+  },
 };
 
 const actions = {
+  async getGroup({ commit }) {
+    const res = await Vue.http.get('/group');
+
+    commit('SET_GROUP', res.data.result);
+  },
+
   async getMembers({ commit }) {
     const res = await Vue.http.get('/group/members');
 
