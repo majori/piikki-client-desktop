@@ -10,7 +10,7 @@
   export default {
     name: 'token-setter-wrapper',
     created() {
-      const token = localStorage.getItem('TOKEN');
+      const token = (process.env.NODE_ENV === 'production') ? localStorage.getItem('TOKEN') : 'restricted_token';
       if (token) {
         this.setToken(token);
       } else {
