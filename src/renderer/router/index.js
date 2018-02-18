@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Landing from '@/components/pages/Landing';
 import User from '@/components/pages/User';
 import Group from '@/components/pages/Group';
 import Graphs from '@/components/pages/Graphs';
@@ -15,8 +14,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'landing-page',
-      component: Landing,
+      redirect: '/user/login',
     },
     {
       path: '/user/login',
@@ -50,7 +48,7 @@ export default new Router({
     },
     {
       path: '*',
-      redirect: '/',
+      redirect: '/user',
     },
   ],
 });
