@@ -7,7 +7,7 @@
     </div>
     <div class="table">
       <table>
-        <tr v-for="trx in transactions" :key="`${trx.username}:${trx.groupName}:${trx.timestamp}`">
+        <tr v-for="trx in transactions" :key="`${trx.timestamp}:${trx.username}:${trx.diff}`">
           <td>{{ trx.timestamp }}</td>
           <td>{{ trx.username }}</td>
           <td>{{ trx.diff }}</td>

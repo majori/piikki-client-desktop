@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import router from '@/router';
+import { format } from 'date-fns';
+import * as _ from 'lodash';
 
 const state = {
   username: '',
@@ -8,6 +10,7 @@ const state = {
     failedAuth: false,
     create: null,
   },
+  transactions: [],
 };
 
 const mutations = {
@@ -27,6 +30,9 @@ const mutations = {
   },
   SET_SALDO(state, saldo) {
     state.saldo = saldo;
+  },
+  SET_USER_TRANSACTIONS(state, transactions) {
+    state.transactions = transactions;
   },
 };
 
@@ -130,6 +136,19 @@ const actions = {
 
     commit('SET_SALDO', res.data.result.saldo);
   },
+
+  getUserTransactions: async ({ commit, state }, timestamp) => {
+    const res = await Vue.http.get(
+      `/group/transactions/${state.username}`,
+      {
+        params: {
+          from: format(timestamp),
+        },
+      },
+    );
+
+    commit('SET_USER_TRANSACTIONS', res.data.result);
+  },
 };
 
 const getters = {
@@ -137,6 +156,11 @@ const getters = {
   saldo: state => state.saldo,
   failedAuth: state => state.errors.failedAuth,
   userCreateError: state => state.errors.create,
+  userTransactions: state => _.map(state.transactions, trx => ({
+    username: trx.username,
+    timestamp: trx.timestamp,
+    diff: _.round(trx.newSaldo - trx.oldSaldo, 2),
+  })),
 };
 
 export default {

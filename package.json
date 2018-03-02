@@ -54,12 +54,14 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "chart.js": "^2.7.1",
     "date-fns": "^1.29.0",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.4",
     "materialize-css": "1.0.0-alpha.1",
     "nfc-pcsc": "^0.6.1",
     "vue": "^2.5.13",
+    "vue-chartjs": "^3.2.1",
     "vue-electron": "^1.0.6",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"

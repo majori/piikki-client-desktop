@@ -1,15 +1,12 @@
 <template>
-  <card>
+  <card v-if="readerOnline">
     <div v-if="!opened">
       <button class="btn waves-effect waves-light" @click="toggleOpen()">
         LINK CARD
       </button>
     </div>
     <div v-else>
-      <div v-if="!readerOnline">
-        Reader is offline
-      </div>
-      <div v-else-if="!tag">
+      <div v-if="!tag">
         Insert card to the reader
       </div>
       <div v-else class="card-ready">
