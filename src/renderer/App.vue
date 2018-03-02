@@ -3,7 +3,9 @@
     <token-setter>
       <navigation id="navigation"/>
       <div id="content">
-        <router-view />
+        <div>
+          <router-view />
+        </div>
       </div>
       <modal/>
     </token-setter>
@@ -42,7 +44,11 @@
 
   #content {
     margin-left: $navigation-width;
-    margin-bottom: 0;
+    height: 100vh;
+
+    & > div {
+      padding-top: 10px;
+    }
   }
 
 </style>
