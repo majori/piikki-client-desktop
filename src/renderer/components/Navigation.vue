@@ -25,7 +25,6 @@
         links: [
           { label: 'Me', icon: 'user-circle-o', name: 'user-page' },
           { label: 'Group', icon: 'users', name: 'group-page' },
-          { label: 'Graphs', icon: 'pie-chart', name: 'graphs-page' },
           { label: 'Settings', icon: 'cogs', name: 'settings-page' },
         ],
       };

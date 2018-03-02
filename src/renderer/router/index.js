@@ -3,7 +3,6 @@ import Router from 'vue-router';
 
 import User from '@/components/pages/User';
 import Group from '@/components/pages/Group';
-import Graphs from '@/components/pages/Graphs';
 import Settings from '@/components/pages/Settings';
 import Login from '@/components/pages/Login';
 import CreateUser from '@/components/pages/CreateUser';
@@ -35,11 +34,6 @@ export default new Router({
       path: '/group',
       name: 'group-page',
       component: Group,
-    },
-    {
-      path: '/graphs',
-      name: 'graphs-page',
-      component: Graphs,
     },
     {
       path: '/settings',
