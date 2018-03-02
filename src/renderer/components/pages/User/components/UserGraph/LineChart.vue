@@ -17,7 +17,7 @@
             xAxes: [{
               type: 'time',
               time: {
-                tooltipFormat: 'D.M. hh:mm:ss',
+                tooltipFormat: 'D.M. HH:mm:ss',
               },
               display: true,
               scaleLabel: {
