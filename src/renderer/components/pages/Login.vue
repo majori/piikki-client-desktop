@@ -35,6 +35,12 @@
   export default {
     name: 'login',
     components: { Card },
+    created() {
+      // If user is already logged in, redirect to user page
+      if (this.loggedInUser) {
+        this.$router.push({ path: '/user' });
+      }
+    },
     data() {
       return {
         username: '',
@@ -44,6 +50,7 @@
     computed: {
       ...mapGetters([
         'failedAuth',
+        'loggedInUser',
       ]),
     },
     methods: {

@@ -13,6 +13,7 @@
       const token = (process.env.NODE_ENV === 'production') ? localStorage.getItem('TOKEN') : 'restricted_token';
       if (token) {
         this.setToken(token);
+        this.getGroup();
       } else {
         this.showModal('set-token');
       }
@@ -21,6 +22,7 @@
       ...mapActions([
         'setToken',
         'showModal',
+        'getGroup',
       ]),
     },
   };

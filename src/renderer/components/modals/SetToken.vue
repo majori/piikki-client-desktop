@@ -25,7 +25,7 @@
 </template>
 
 <script>
-  import { mapActions, mapGetters } from 'vuex';
+  import { mapActions } from 'vuex';
 
   export default {
     name: 'set-token-modal',
@@ -37,9 +37,6 @@
       };
     },
     computed: {
-      ...mapGetters([
-        'isModalOpen',
-      ]),
       tokenExists() {
         return localStorage.getItem('TOKEN');
       },

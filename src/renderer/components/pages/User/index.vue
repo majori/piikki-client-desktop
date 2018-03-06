@@ -43,12 +43,20 @@
       Card,
       Graph,
     },
-    created() {
+
+    async mounted() {
       // User is not logged in, redirect to login
       if (!this.username) {
         this.$router.push({ path: '/user/login' });
+      } else {
+        try {
+          await this.getSaldo();
+        } catch (err) {
+          this.showModal('add-to-group');
+        }
       }
     },
+
     computed: {
       ...mapGetters({
         username: 'loggedInUser',
@@ -57,6 +65,8 @@
     methods: {
       ...mapActions([
         'logout',
+        'getSaldo',
+        'showModal',
       ]),
     },
   };

@@ -48,7 +48,7 @@ const actions = {
     );
 
     if (res.data.result.authenticated) {
-      commit('LOGIN', userInfo.username);
+      await commit('LOGIN', userInfo.username);
       router.push({ name: 'user-page' });
     } else {
       commit('LOGIN_ERROR');
@@ -122,8 +122,8 @@ const actions = {
     }
   },
 
-  getSaldo: async ({ commit }, username) => {
-    const res = await Vue.http.get(`/group/members/${username}`);
+  getSaldo: async ({ commit, rootState }) => {
+    const res = await Vue.http.get(`/group/members/${rootState.user.username}`);
 
     commit('SET_SALDO', res.data.result.saldo);
   },

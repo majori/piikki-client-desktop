@@ -5,6 +5,7 @@
         <div class="modal-wrapper">
           <div class="modal-container">
             <set-token v-if="modalType === 'set-token'" :closeModal="closeModal"/>
+            <add-to-group v-if="modalType === 'add-to-group'" :closeModal="closeModal"/>
           </div>
         </div>
       </div>
@@ -13,12 +14,13 @@
 </template>
 
 <script>
-  import SetToken from '@/components/modals/SetToken';
   import { mapActions, mapGetters } from 'vuex';
+  import SetToken from './SetToken';
+  import AddToGroup from './AddToGroup';
 
   export default {
     name: 'modal-root',
-    components: { SetToken },
+    components: { SetToken, AddToGroup },
     computed: {
       ...mapGetters([
         'isModalOpen',

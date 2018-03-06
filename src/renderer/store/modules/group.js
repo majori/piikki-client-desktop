@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 import { format } from 'date-fns';
 
 const state = {
-  group: {
+  info: {
     name: null,
   },
   saldo: null,
@@ -22,7 +22,7 @@ const mutations = {
     state.transactions = transactions;
   },
   SET_GROUP(state, group) {
-    state.group = group;
+    state.info = group;
   },
 };
 
@@ -64,9 +64,17 @@ const actions = {
 
     commit('SET_GROUP_TRANSACTIONS', res.data.result);
   },
+
+  async addCurrentUserToGroup({ rootState }) {
+    await Vue.http.post(
+      '/group/addMember',
+      { username: rootState.user.username },
+    );
+  },
 };
 
 const getters = {
+  group: state => state.info.name,
   members: state => state.members,
   membersBySaldo: state => (dir = 'asc') => _.orderBy(state.members, ['saldo'], [dir]),
   membersByUsername: state => (dir = 'asc') => _.orderBy(state.members, ['username'], [dir]),

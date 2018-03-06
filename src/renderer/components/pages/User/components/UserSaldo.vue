@@ -27,7 +27,7 @@
       };
     },
     created() {
-      this.getSaldo(this.username);
+      this.getSaldo();
     },
     computed: {
       saldo() {
