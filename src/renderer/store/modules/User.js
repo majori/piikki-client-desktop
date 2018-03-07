@@ -159,7 +159,7 @@ const getters = {
   userTransactions: state => _.map(state.transactions, trx => ({
     username: trx.username,
     timestamp: trx.timestamp,
-    diff: _.round(trx.newSaldo - trx.oldSaldo, 2),
+    saldo: trx.newSaldo,
   })),
 };
 

@@ -29,7 +29,7 @@
               fill: false,
               steppedLine: 'after',
               borderColor: '#4b29c5', // TODO Get color from style variable
-              data: this.transactions.map(trx => ({ x: trx.timestamp, y: trx.diff })),
+              data: this.transactions.map(trx => ({ x: trx.timestamp, y: trx.saldo })),
             },
           ],
         };
