@@ -41,7 +41,7 @@
       }),
     },
     methods: {
-      addSaldo() {
+      async addSaldo() {
         this.deltaSaldo = this.deltaSaldo + 1;
         this.saldoChanged();
       },
@@ -59,12 +59,20 @@
           username: this.username,
           amount: this.deltaSaldo,
         });
+
+        // This adds new point to the transaction graph
+        await this.addUserTransaction({
+          saldo: this.realSaldo,
+          timestamp: new Date().toISOString(),
+        });
+
         this.deltaSaldo = 0;
-      }, 1000),
+      }, 600),
 
       ...mapActions([
         'getSaldo',
         'makeTransaction',
+        'addUserTransaction',
       ]),
     },
     watch: {

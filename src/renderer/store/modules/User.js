@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import router from '@/router';
-import { format } from 'date-fns';
+import { format, subDays } from 'date-fns';
 import * as _ from 'lodash';
 
 const state = {
@@ -142,12 +142,22 @@ const actions = {
       `/group/transactions/${state.username}`,
       {
         params: {
-          from: format(timestamp),
+          from: format(timestamp || subDays(new Date(), 90)),
         },
       },
     );
 
-    commit('SET_USER_TRANSACTIONS', res.data.result);
+    commit(
+      'SET_USER_TRANSACTIONS',
+      _.map(res.data.result, trx => ({
+        saldo: trx.newSaldo,
+        timestamp: trx.timestamp,
+      })),
+    );
+  },
+
+  addUserTransaction: async ({ commit, state }, transaction) => {
+    commit('SET_USER_TRANSACTIONS', _.concat([transaction], state.transactions));
   },
 };
 
@@ -156,11 +166,7 @@ const getters = {
   saldo: state => state.saldo,
   failedAuth: state => state.errors.failedAuth,
   userCreateError: state => state.errors.create,
-  userTransactions: state => _.map(state.transactions, trx => ({
-    username: trx.username,
-    timestamp: trx.timestamp,
-    saldo: trx.newSaldo,
-  })),
+  userTransactions: state => state.transactions,
 };
 
 export default {
