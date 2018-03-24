@@ -1,18 +1,48 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
+import User from '@/components/pages/User';
+import Group from '@/components/pages/Group';
+import Settings from '@/components/pages/Settings';
+import Login from '@/components/pages/Login';
+import CreateUser from '@/components/pages/CreateUser';
+
 Vue.use(Router);
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'landing-page',
-      component: require('@/components/LandingPage').default,
+      redirect: '/user/login',
+    },
+    {
+      path: '/user/login',
+      name: 'login-page',
+      component: Login,
+    },
+    {
+      path: '/user',
+      name: 'user-page',
+      component: User,
+    },
+    {
+      path: '/user/create',
+      name: 'create-user-page',
+      component: CreateUser,
+    },
+    {
+      path: '/group',
+      name: 'group-page',
+      component: Group,
+    },
+    {
+      path: '/settings',
+      name: 'settings-page',
+      component: Settings,
     },
     {
       path: '*',
-      redirect: '/',
+      redirect: '/user',
     },
   ],
 });
