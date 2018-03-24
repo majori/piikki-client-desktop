@@ -4,7 +4,7 @@
       <members />
     </div>
     <div class="col s7 row">
-      <div class="col s8">
+      <div class="col s6">
         <group-saldo />
       </div>
       <div class="col s12">
