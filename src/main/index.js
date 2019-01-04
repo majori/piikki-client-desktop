@@ -23,6 +23,8 @@ function createWindow() {
     width: 1000,
   });
 
+  mainWindow.maximize(true);
+
   mainWindow.loadURL(winURL);
 
   mainWindow.on('closed', () => {
