@@ -46,7 +46,7 @@
     padding-top: 10px;
 
     img {
-      width: 80%;
+      width: 70%;
     }
   }
 
